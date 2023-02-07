@@ -1,0 +1,113 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+<div >
+  <h3>Final grades : </h3> 
+ </div> 
+{% endblock page_title %}
+{% block main_content %}
+<!-- Main content -->
+
+<section class="content">
+   
+  
+  <div class="container-fluid">
+    
+    
+    
+    <div class="row">
+      <div class="col-md-12">
+        <!-- general form elements -->
+
+        <!-- /.card -->
+        <div class="card card-primary">
+          
+
+          <div class="table">
+            <table class="table">
+              <tr style="background-color: rgb(175, 180, 219);">
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Assignment Marks</th>
+                <th>Exam Marks</th>
+                <th>Grade Point</th>
+              </tr>
+              {% for row in studentresult %}
+              <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.subject_id.subject_name }}</td>
+                <td>{{ row.subject_assignment_marks }}</td>
+                <td>{{ row.subject_exam_marks }}</td>
+                <td>
+                  <script>//javascript code
+                   a = {{ row.subject_assignment_marks }};//initialization of variables
+                    b = {{ row.subject_exam_marks }};
+                    sum = a + b;//perform sum operation                        
+
+                    if (sum >= 100) {
+                      document.write("4.00")
+
+                    }
+                    else if (sum >= 90) {
+                      document.write("3.75")
+
+                    }
+                    else if (sum >= 80) {
+                      document.write("3.50")
+
+                    }
+                    else if (sum >= 70) {
+                      document.write("3.25")
+
+                    }
+                    else if (sum >= 60) {
+                      document.write("3.00")
+
+                    }
+                    else if (sum >= 50) {
+                      document.write("2.75")
+
+                    }
+                    else if (sum >= 40) {
+                      document.write("2.50")
+
+                    }
+                    else {
+                      document.write("0.00")
+                    }
+                   
+                  </script>
+                </td>
+
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+    
+          <div class="table">
+            <table class="table">
+              <tr style="background-color:rgb(83, 136, 136)">
+              
+                <th>CGPA</th>
+                <th>Semester</th>
+                <th>Status</th>              
+              </tr>
+          
+              <tr style="background-color: rgb(223, 231, 238);">
+                <td>{{result}}</td>
+                <td> 1st Semester</td>              
+                <td> {{status}}</td>
+              </tr>
+            
+            </table>
+          </div>
+        
+      </div>
+      
+      </div>
+    </div>
+  
+  </div>
+</section>
+<!-- /.content -->
+{% endblock main_content %}
